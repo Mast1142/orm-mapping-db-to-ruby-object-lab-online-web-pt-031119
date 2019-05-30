@@ -29,12 +29,19 @@ class Student
     end.first
   end
 
+def self.all_students_in_grade_9
+  sql = <<-SQL
+  SELECT *
+  FROM students WHERE grade = 9
+  SQL
+  DB[:conn].execute(sql)
+end
+
   def save
     sql = <<-SQL
       INSERT INTO students (name, grade)
       VALUES (?, ?)
     SQL
-
     DB[:conn].execute(sql, self.name, self.grade)
   end
 
@@ -46,7 +53,6 @@ class Student
       grade TEXT
     )
     SQL
-
     DB[:conn].execute(sql)
   end
 
