@@ -35,7 +35,6 @@ def self.all_students_in_grade_9
   FROM students WHERE grade = 9
   SQL
   DB[:conn].execute(sql)
-  binding.pry
 end
 
   def save
